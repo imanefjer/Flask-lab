@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Car Price Prediction</h2>
+        <form action="/predict" method="post">
+            <input type="number" step="any" name="wheelbase" placeholder="Wheelbase (For example: 88.6)" required>
+            <input type="number" step="any" name="carlength" placeholder="Car Length (For example: 168.8)" required>
+            <input type="number" step="any" name="carwidth" placeholder="Car Width (For example: 64.1)" required>
+            <input type="number" step="any" name="carheight" placeholder="Car Height (For example: 48.8)" required>
+            <input type="number" step="any" name="curbweight" placeholder="Curb Weight (For example: 2548)" required>
+            <input type="number" step="any" name="enginesize" placeholder="Engine Size (For example: 130)" required>
+            <input type="number" step="any" name="horsepower" placeholder="Horsepower (For example: 111)" required>
+            <input type="number" step="any" name="peakrpm" placeholder="Peak RPM (For example: 5000)" required>
+            <input type="number" step="any" name="citympg" placeholder="City MPG (For example: 21)" required>
+            <input type="number" step="any" name="highwaympg" placeholder="Highway MPG (For example: 27)" required>
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
